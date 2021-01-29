@@ -88,7 +88,7 @@
         const caseCount = getInputValue('case');
         const totalNewCount = phoneCount * 1219 + caseCount * 59;
         document.getElementById("total-price").innerText = '$' + totalNewCount;
-        const tax = totalNewCount * 0.1;
+        const tax = Math.round(totalNewCount * 0.1);
         document.getElementById('tax-total').innerText = "$" + tax;
         const grand = tax + totalNewCount;
         document.getElementById('grand-total').innerText = "$" + grand;
