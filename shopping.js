@@ -1,20 +1,20 @@
-// document.getElementById("plusButton").addEventListener("click", function () {
-//     const currentIn = document.getElementById("currentInput");
-//     const currentInP = parseFloat(currentIn.value) + 1;
-//     currentIn.value = currentInP;
-//     const plusTotalCurrent = currentInP * 1219;
-//     document.getElementById("currentText").innerText = plusTotalCurrent;
+    // document.getElementById("plusButton").addEventListener("click", function () {
+    //     const currentIn = document.getElementById("currentInput");
+    //     const currentInP = parseFloat(currentIn.value) + 1;
+    //     currentIn.value = currentInP;
+    //     const plusTotalCurrent = currentInP * 1219;
+    //     document.getElementById("currentText").innerText = plusTotalCurrent;
 
-//     });
+    //     });
 
-// document.getElementById("minusButton").addEventListener("click", function () {
-//     const currentIn = document.getElementById("currentInput");
-//     currentInM = parseFloat(currentIn.value) - 1;
-//     currentIn.value = currentInM;
-//     const minusCurrentTotal = currentInM * 1219;
-//     document.getElementById("currentText").innerText = minusCurrentTotal;
+    // document.getElementById("minusButton").addEventListener("click", function () {
+    //     const currentIn = document.getElementById("currentInput");
+    //     currentInM = parseFloat(currentIn.value) - 1;
+    //     currentIn.value = currentInM;
+    //     const minusCurrentTotal = currentInM * 1219;
+    //     document.getElementById("currentText").innerText = minusCurrentTotal;
 
-// });
+    // });
 
     // document.getElementById("plusButton").addEventListener("click", function () {
     //     handleBtnWithPrice(true);
@@ -60,23 +60,50 @@
     //     document.getElementById("current-value").innerText = totalCount;
     // }
 
-    function eventHandlerForCount(product , isIncreases){
+    function eventHandlerForCount(product, isIncreases) {
         const ProductInputCount = document.getElementById(product + "-count");
         const newInputCount = parseFloat(ProductInputCount.value);
         let ProductNewCount = newInputCount;
-        if(isIncreases == false &&  newInputCount>0){
+        if (isIncreases == false && newInputCount > 0) {
             ProductNewCount = newInputCount - 1;
         }
-        if(isIncreases == true){
-            ProductNewCount = newInputCount +1;
+        if (isIncreases == true) {
+            ProductNewCount = newInputCount + 1;
         }
         ProductInputCount.value = ProductNewCount;
         let priceTotal = 0;
-        if(product == 'phone'){
+        if (product == 'phone') {
             priceTotal = ProductNewCount * 1219;
         }
-        if(product == 'case'){
+        if (product == 'case') {
             priceTotal = ProductNewCount * 59;
         }
         document.getElementById(product + "-text").innerText = priceTotal;
+        subTotalPrice();
     }
+
+    function subTotalPrice() {
+
+        const phoneCount = getInputValue('phone');
+        const caseCount = getInputValue('case');
+        const totalNewCount = phoneCount * 1219 + caseCount * 59;
+        document.getElementById("total-price").innerText = '$' + totalNewCount;
+        const tax = totalNewCount * 0.1;
+        document.getElementById('tax-total').innerText = "$" + tax;
+        const grand = tax + totalNewCount;
+        document.getElementById('grand-total').innerText = "$" + grand;
+    }
+    function getInputValue(product) {
+        const inputProductCount = document.getElementById(product + "-count");
+        newProductCount = parseFloat(inputProductCount.value);
+        return newProductCount;
+    }
+
+            // function subTotalPrice(){
+            //     const phoneCount = document.getElementById("phone-count");
+            //     newPhoneCount = parseFloat(phoneCount.value);
+            //     const caseCount = document.getElementById("case-count");
+            //     newCaseCount = parseFloat(caseCount.value);
+            //     totalNewCount = newPhoneCount * 1219 + newCaseCount * 59;
+            //     document.getElementById("total-price").innerText = '$' + totalNewCount;
+            // }
