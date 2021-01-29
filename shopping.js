@@ -16,25 +16,67 @@
 
 // });
 
-    document.getElementById("plusButton").addEventListener("click", function () {
-        handleBtnWithPrice(true);
-    });
-    document.getElementById("minusButton").addEventListener("click", function () {
-        handleBtnWithPrice(false);
-    });
+    // document.getElementById("plusButton").addEventListener("click", function () {
+    //     handleBtnWithPrice(true);
+    // });
+    // document.getElementById("minusButton").addEventListener("click", function () {
+    //     handleBtnWithPrice(false);
+    // });
 
-    function handleBtnWithPrice(isIncrease){
-        const currentIn = document.getElementById("currentInput");
-        const currentInP = parseFloat(currentIn.value);
-        let newCurrentInP = currentInP;
+    // function handleBtnWithPrice(isIncrease){
+    //     const currentIn = document.getElementById("currentInput");
+    //     const currentInP = parseFloat(currentIn.value);
+    //     let newCurrentInP = currentInP;
 
-        if(isIncrease == false && newCurrentInP > 0){
-            newCurrentInP = currentInP -1;
+    //     if(isIncrease == false && newCurrentInP > 0){
+    //         newCurrentInP = currentInP -1;
+    //     }
+    //     if(isIncrease == true){
+    //         newCurrentInP = currentInP +1;
+    //     }
+    //     currentIn.value = newCurrentInP;
+    //     const plusTotalCurrent = newCurrentInP * 1219;
+    //     document.getElementById("currentText").innerText = plusTotalCurrent;
+    // }
+
+    // document.getElementById("minus-count").addEventListener("click", function(){
+    //     eventHandlerForCount(false);
+    // })
+    // document.getElementById("plus-count").addEventListener("click", function(){
+    //     eventHandlerForCount(true);
+    // })
+    // function eventHandlerForCount(isIncreases){
+    //     const inputCount = document.getElementById("input-count");
+    //     const newInputCount = parseFloat(inputCount.value);
+    //     let newCount = newInputCount;
+    //     if(isIncreases == false &&  newInputCount>0){
+    //         newCount = newInputCount - 1;
+    //     }
+    //     if(isIncreases == true){
+    //         newCount = newInputCount +1;
+    //     }
+    //     inputCount.value = newCount;
+    //     const totalCount = newCount * 59;
+    //     document.getElementById("current-value").innerText = totalCount;
+    // }
+
+    function eventHandlerForCount(product , isIncreases){
+        const ProductInputCount = document.getElementById(product + "-count");
+        const newInputCount = parseFloat(ProductInputCount.value);
+        let ProductNewCount = newInputCount;
+        if(isIncreases == false &&  newInputCount>0){
+            ProductNewCount = newInputCount - 1;
         }
-        if(isIncrease == true){
-            newCurrentInP = currentInP +1;
+        if(isIncreases == true){
+            ProductNewCount = newInputCount +1;
         }
-        currentIn.value = newCurrentInP;
-        const plusTotalCurrent = newCurrentInP * 1219;
-        document.getElementById("currentText").innerText = plusTotalCurrent;
+        ProductInputCount.value = ProductNewCount;
+        let priceTotal = 0;
+        if(product == 'phone'){
+            priceTotal = ProductNewCount * 1219;
+        }
+        if(product == 'case'){
+            priceTotal = ProductNewCount * 59;
+        }
+        document.getElementById(product + "-text").innerText = priceTotal;
     }
